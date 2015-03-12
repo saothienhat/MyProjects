@@ -19,7 +19,7 @@ import java.text.DateFormat;
 
 import java.util.Date;
 
-import com.nortelnetworks.wls.common.base.util.WLSSimpleDateFormat;
+import com.nortelnetworks.wls.common.base.util.WLSSimpleDateFormat; //
 
 /**
  * The <code>DebugLog</code> class provides the assertion based Debug Message facility.
