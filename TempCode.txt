@@ -1,1 +1,31 @@
 
+/**
+     * Method to check if certain file is closed or not in Window system
+     *
+     * @param fileName
+     * @return true if file is opening. Otherwise, return false
+     */
+    public static boolean isFileClosedInWindowSystem(String fileName) {  
+        boolean isFileClosed;
+        FileChannel channel = null;
+        try {
+            File file = new File(fileName);
+            channel = new RandomAccessFile(file, "rw").getChannel();
+            isFileClosed = true;
+        } catch(Exception ex) {
+            isFileClosed = false;
+        } finally {
+            if(channel!=null) {
+                try {
+                    channel.close();
+                } catch (IOException ex) {
+                    // exception handling
+                }
+            }
+        }
+        return isFileClosed;
+   }
+   
+   
+   
+   
