@@ -5,7 +5,7 @@
  */
 
 
-package main.java.projects.timetable.model;
+
 
 
 /**
