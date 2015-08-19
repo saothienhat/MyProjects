@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+   <bean id="helloWorldXMLBean" class="com.javahonk.beans.HelloWorldXMLBean" lazy-init="true">  
+       <property name="message" value="Hello World!"/>
+   </bean>
+   <bean id="helloWorldIndiaXMLBean" class="com.javahonk.beans.HelloWorldIndiaXMLBean" parent="helloWorldXMLBean">
+      <property name="message" value="Hello India!"/>
+      <property name="message3" value="Namaste India!"/>
+   </bean>
+   
+   <bean id="singletonBean" class="com.javahonk.beans.SingletonBean">  
+       <property name="message" value="Hello SingletonBean !"/>
+   </bean>
+   
+   <bean id="prototypeBean" class="com.javahonk.beans.PrototypeBean" scope="prototype" init-method="initMethod" destroy-method="destroyMethod">  
+       <property name="message" value="Hello PrototypeBean !"/>
+   </bean>
+   
+   <bean id="contextStartEventHandler" 
+         class="com.javahonk.beans.ContextStartEventHandler"/>
+
+   <bean id="contextStopEventHandler" 
+         class="com.javahonk.beans.ContextStopEventHandler"/>
+         
+    <!-- ** Database Access configuration begin... **  -->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	   <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+	   <property name="url" value="jdbc:mysql://localhost:3306/TEST"/>
+	   <property name="username" value="root"/>
+	   <property name="password" value="admin"/>
+	</bean>	
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">  
+		<property name="dataSource" ref="dataSource"></property>  
+	</bean>
+	
+	<!-- DAOs -->
+	<bean id="studentTestDaoImpl" class="com.javahonk.dao.StudentTestDaoImpl">  
+		<property name="jdbcTemplate" ref="jdbcTemplate"></property>  
+	</bean>
+	<bean id="userDaoImpl" class="com.javahonk.dao.impl.UserDaoImpl">  
+		<property name="jdbcTemplate" ref="jdbcTemplate"></property>  
+	</bean>
+	
+	<!-- ** Database Access configuration end **  -->
+	
+	
+	<!-- ** Email configuration begin **  -->
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+	    <property name="host" value="mail.evolableasia.vn"/>
+	    <property name="defaultEncoding" value="UTF-8"/>
+	</bean>	
+	<!-- this is a template message that we can pre-load with default state -->
+	<bean id="templateMessage" class="org.springframework.mail.SimpleMailMessage">
+	    <property name="from" value="binhtt@evolableasia.vn"/>
+	    <property name="subject" value="Your order"/>	    
+	</bean>	
+	<bean id="simpleOrderEmailSender" class="com.javahonk.emails.SimpleOrderEmailSender">
+	    <property name="mailSender" ref="mailSender"/>
+	    <property name="templateMessage" ref="templateMessage"/>	    
+	</bean>
+	
+	<!-- for SimpleRegistrationEmailSender class -->
+	<bean id="javaMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host" value="mail.evolableasia.vn"/>
+        <property name="defaultEncoding" value="UTF-8"/> 
+    </bean>
+    <bean id="simpleRegistrationEmailSender" class="com.javahonk.emails.SimpleRegistrationEmailSender">
+        <property name="javaMailSender" ref="javaMailSender"/>
+    </bean>
+    
+	<!-- ** Email configuration end **  -->
+	
+	
+   
+</beans>
