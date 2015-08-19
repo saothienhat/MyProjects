@@ -17,6 +17,11 @@ public class StudentServiceImpl implements StudentService{
 	
 	private static final String STUDENTTESTDAOIMPL_DAO_ID = "studentTestDaoImpl";
 
+	
+	
+	/* (non-Javadoc)
+	 * @see com.javahonk.controller.StudentService#getStudent(int)
+	 */
 	@Override
 	public StudentTest getStudent(int studentID) {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext(Constants.BEAN_XML_CONFIGURATION_FILE);  
@@ -26,6 +31,11 @@ public class StudentServiceImpl implements StudentService{
 		return student;
 	}
 
+	
+	
+	/* (non-Javadoc)
+	 * @see com.javahonk.controller.StudentService#getAllStudents()
+	 */
 	@Override
 	public List<StudentTest> getAllStudents() {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext(Constants.BEAN_XML_CONFIGURATION_FILE);  

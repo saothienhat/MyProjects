@@ -57,7 +57,7 @@ public class MainApp {
 		
 //		testContextEventHandler();
 		
-//		testDatabaseAccessUsingJdbcTemplate();
+		testDatabaseAccessUsingJdbcTemplate();
 		
 		/* Email Sender feature*/
 		// ** SimpleOrderEmailSender

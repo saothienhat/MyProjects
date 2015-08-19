@@ -12,7 +12,7 @@
 				
 	    $scope.getStudentFromServer = function() {	    	
 	    	$http({method: 'GET', url: 'springAngularJS'}).
-	        success(function(data, status, headers, config) {
+	        success(function(data, status, headers, config) {	        	
 	        	$scope.student = data;
 	        }).
 	        error(function(data, status, headers, config) {

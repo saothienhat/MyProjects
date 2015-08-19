@@ -41,26 +41,5 @@ public class SpringMVCController {
 		return student;
 	}
 	
-//	/**
-//	 * Get Student from Database
-//	 * @return
-//	 */
-//	@RequestMapping(value="/springAngularJS.web", 
-//			method=RequestMethod.GET,
-//			produces={"application/xml", "application/json"})
-//    public @ResponseBody List<StudentTest>  getStudentsFromServer() {		
-//		StudentServiceImpl studentServiceImpl = new StudentServiceImpl();
-//		List<StudentTest> students = studentServiceImpl.getAllStudents();
-//		
-//		System.out.println("Fetched Students:");
-//		for (int index = 0; index < students.size(); index++) {
-//			System.out.println("Student " + index); 
-//			StudentTest student = students.get(index);
-//			System.out.println("\nFirst name: " + student.getFirstName());
-//			System.out.println("\nEmail: " + student.getEmail()); 
-//		}
-//		return students;
-//	}
-	
 	
 }

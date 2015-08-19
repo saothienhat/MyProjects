@@ -26,16 +26,6 @@ public class UserDaoImpl implements UserDao {
 			return true;
 		}
 		return false;
-		
-		// PreparedStatement pstmt =
-		// dataSource.getConnection().prepareStatement(query);
-		// pstmt.setString(1, username);
-		// pstmt.setString(2, password);
-		// ResultSet resultSet = pstmt.executeQuery();
-		// if (resultSet.next())
-		// return (resultSet.getInt(1) > 0);
-		// else
-		// return false;
 	}
 
 }
