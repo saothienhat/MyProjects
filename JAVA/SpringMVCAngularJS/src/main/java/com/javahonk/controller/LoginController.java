@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.javahonk.beans.LoginBean;
+import com.javahonk.model.User;
 import com.javahonk.services.impl.LoginServiceImpl;
 
 @Controller
@@ -19,24 +19,23 @@ public class LoginController {
 //	private LoginDelegate loginDelegate;
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public ModelAndView displayLogin(HttpServletRequest request, HttpServletResponse response, LoginBean loginBean) {
+	public ModelAndView displayLogin(HttpServletRequest request, HttpServletResponse response, User user) {
 		ModelAndView model = new ModelAndView("login");
-		model.addObject("loginBean", loginBean);
+		model.addObject("user", user);
 		return model;
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public ModelAndView executeLogin(HttpServletRequest request, HttpServletResponse response,
-			@ModelAttribute("loginBean") LoginBean loginBean) {
+			@ModelAttribute("user") User user) {
 		ModelAndView model = null;
 		try {
 			System.out.println("call LoginController.executeLogin().....................");  
 			LoginServiceImpl loginServiceImpl = new LoginServiceImpl();
-//			boolean isValidUser = loginDelegate.isValidUser(loginBean.getUsername(), loginBean.getPassword());
-			boolean isValidUser = loginServiceImpl.isValidUser(loginBean.getUsername(), loginBean.getPassword());
+			boolean isValidUser = loginServiceImpl.isValidUser(user.getUsername(), user.getPassword());
 			if (isValidUser) {
 				System.out.println("User Login Successful");
-				request.setAttribute("loggedInUser", loginBean.getUsername());
+				request.setAttribute("loggedInUser", user.getUsername());
 				model = new ModelAndView("welcome");
 			} else {
 				model = new ModelAndView("login");

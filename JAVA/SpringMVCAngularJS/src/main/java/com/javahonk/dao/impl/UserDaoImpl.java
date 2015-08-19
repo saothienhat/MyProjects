@@ -20,7 +20,7 @@ public class UserDaoImpl implements UserDao {
 	public boolean isValidUser(String username, String password) throws SQLException {
 		String sqlQuery = "SELECT COUNT(1) FROM USER WHERE USERNAME = ? AND PASSWORD = ?";
 
-		Integer count = (Integer) jdbcTemplate.queryForObject(sqlQuery, new Object[]{username, password}, String.class);
+		Integer count = (Integer) jdbcTemplate.queryForObject(sqlQuery, new Object[]{username, password}, Integer.class);
 		if (count != null && count.intValue() > 0) {
 			System.out.println("Count:  " + count.intValue()); 
 			return true;
