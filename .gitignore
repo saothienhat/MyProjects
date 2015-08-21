@@ -1,1 +1,13 @@
-*.classpath
+*.class; *.classpath
+*.class
+JAVA/SpringMVCAngularJS/src/main/java/com/javahonk/.svn/entries
+*.svn-base
+JAVA/SpringMVCAngularJS/src/main/webapp/WEB-INF/pages/.svn/text-base/angularJS.jsp.svn-base
+*.svn-base
+JAVA/SpringMVCAngularJS/src/main/java/com/javahonk/dao/impl/.svn/entries
+*.svn-base
+JAVA/SpringMVCAngularJS/src/main/java/com/javahonk/controller/.svn/text-base/SpringMVCController.java.svn-base
+*.svn-base
+JAVA/SpringMVCAngularJS/src/main/java/com/javahonk/controller/.svn/entries
+*.svn-base
+JAVA/SpringMVCAngularJS/target/SpringMVCAngularJS.war
